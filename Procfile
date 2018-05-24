@@ -1,2 +1,2 @@
-build: npm run build:www
+worker: npm run build:www
 web: npm start
