@@ -5,12 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { LoginPage } from '../pages/login/login';
-import { RoomPage } from '../pages/room/room';
-import { RegisterPage } from '../pages/register/register';
-import { PrivacyPage } from '../pages/privacy/privacy';
 import { HomePageModule } from '../pages/home/home.module';
 import { WelcomePageModule } from '../pages/welcome/welcome.module';
 import { PrivacyPageModule } from '../pages/privacy/privacy.module';

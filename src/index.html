@@ -16,7 +16,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <script>
-    if (location.protocol != 'https:')
+    if (window.matchMedia('screen and (max-width: 768px)').matches) {
+      location.href = 'http://app.sync.theater';
+    }
+
+    if (location.protocol != 'https:' && location.hostname !== 'localhost')
     {
       location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
     }
