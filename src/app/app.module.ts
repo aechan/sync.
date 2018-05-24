@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { RoomPage } from '../pages/room/room';
 import { RegisterPage } from '../pages/register/register';
 import { PrivacyPage } from '../pages/privacy/privacy';
+import { HomePageModule } from '../pages/home/home.module';
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +23,7 @@ import { PrivacyPage } from '../pages/privacy/privacy';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    HomePageModule,
     WelcomePage,
     LoginPage,
     RoomPage,
