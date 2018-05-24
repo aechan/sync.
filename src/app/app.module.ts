@@ -14,12 +14,6 @@ import { PrivacyPage } from '../pages/privacy/privacy';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    WelcomePage,
-    LoginPage,
-    RoomPage,
-    RegisterPage,
-    PrivacyPage
   ],
   imports: [
     BrowserModule,
