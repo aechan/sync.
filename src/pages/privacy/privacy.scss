@@ -1,0 +1,101 @@
+page-privacy {
+    ion-content {
+        background: #9068dd; /* Old browsers */
+        background: -moz-linear-gradient(top, #9068dd 0%, #6466c7 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #9068dd 0%,#6466c7 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #9068dd 0%,#6466c7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9068dd', endColorstr='#6466c7',GradientType=0 ); /* IE6-9 */
+    }
+
+    #head {
+        height: 12%;
+        min-height: 74px;
+        padding: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
+        width: auto;
+        border-bottom: 1px solid #9B7ADD;
+    }
+
+    #logo {
+        height: 100%;
+        min-height: 32px;
+    }
+
+    #login {
+        float: right;
+        right: 60px;
+        padding: 25px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    #foot {
+        margin-right: 40px;
+        margin-left: 40px;
+        border-top: 1px solid #9B7ADD;
+        height: 10%;
+        width: auto;
+        color: #DCDCDC;
+        padding: 3%;
+        padding-top: 2%;
+    }
+
+    .sync-button {
+        background-color: #78F6FD;
+        border-radius: 10px;
+        border-style: none;
+        color: #3B4F8F;
+    }
+
+    .sync-button:hover {
+        background-color: #fff !important;
+    }
+
+    #content {
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-top: 40px;
+    }
+
+    #left {
+        flex: 1;
+        padding: 1rem;  
+        padding-right: 0.5rem;      
+    }
+    #left img {
+        min-height: 245px;
+        max-height: 70vh;
+
+    }
+
+    #right {
+        flex: 0.8;
+        padding: 1rem;
+  
+        padding-left: 0.5rem;
+    }
+
+    #subtext {
+        font-size: 1.2rem;
+        color: #fff;
+        font-weight: 300;
+    }
+
+    #title {
+        font-weight: 900;
+        color: #78F6FD;
+        font-size: 3.5rem;
+    }
+
+    #desc {
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 300;
+    }
+
+    #sign-up {
+        font-size: 2.5rem;
+        padding: 30px;
+    }
+}

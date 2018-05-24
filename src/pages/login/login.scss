@@ -1,0 +1,17 @@
+page-login {
+    ion-content {
+        background: #9068dd; /* Old browsers */
+        background: -moz-linear-gradient(top, #9068dd 0%, #6466c7 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #9068dd 0%,#6466c7 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #9068dd 0%,#6466c7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9068dd', endColorstr='#6466c7',GradientType=0 ); /* IE6-9 */
+    }
+
+    .toolbar-title-md {
+        font-weight: 600;
+    }
+    .toolbar-md-trans {
+        color: map-get($colors, "primary");
+
+    }
+}
