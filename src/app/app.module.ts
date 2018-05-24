@@ -12,23 +12,31 @@ import { RoomPage } from '../pages/room/room';
 import { RegisterPage } from '../pages/register/register';
 import { PrivacyPage } from '../pages/privacy/privacy';
 import { HomePageModule } from '../pages/home/home.module';
+import { WelcomePageModule } from '../pages/welcome/welcome.module';
+import { PrivacyPageModule } from '../pages/privacy/privacy.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { RegisterPageModule } from '../pages/register/register.module';
+import { RoomPageModule } from '../pages/room/room.module';
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp
+
   ],
   imports: [
     BrowserModule,
+    HomePageModule,
+    WelcomePageModule,
+    PrivacyPageModule,
+    LoginPageModule,
+    RegisterPageModule,
+    RoomPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePageModule,
     WelcomePage,
-    LoginPage,
-    RoomPage,
-    RegisterPage,
-    PrivacyPage
+
   ],
   providers: [
     StatusBar,
