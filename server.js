@@ -3,13 +3,17 @@ var app      = express();
 var morgan = require('morgan');            
 var bodyParser = require('body-parser');    
 var cors = require('cors');
- 
+var mobile = require('mobile-detect');
+
+
 app.use(morgan('dev'));                                        
 app.use(bodyParser.urlencoded({'extended':'true'}));            
 app.use(bodyParser.json());                                     
 app.use(cors());
  
 app.use(function(req, res, next) {
+  var md = new mobile(req.headers['user-agent']);
+    if(md.phone() || md.mobile() || md.tablet()) res.redirect('https://app.sync.theater');
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
