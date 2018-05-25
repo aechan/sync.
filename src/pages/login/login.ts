@@ -18,6 +18,8 @@ export class LoginPage {
   loginForm: FormGroup;
   submitAttempt: boolean = false;
   current = null;
+  
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     const fb = new FormBuilder();
     this.loginForm = fb.group({
@@ -27,6 +29,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() { 
+    const anime = window['anime'];
     document.querySelector('#email').addEventListener('focus', function(e) {
       if (this.current) this.current.pause();
       this.current = anime({
