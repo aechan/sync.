@@ -17,12 +17,13 @@ page-login {
         align-items: center;
 }
     // Variables
-$c-bg-color: #2B2D42;
-$c-btn-color: #4ECDC4;
+$c-bg-color: #6E40F3;
+$c-btn-color: #FFF;
 $radius: 4px;
 
 
 .login {
+  
   align-self: flex-start;    
   background: $c-bg-color;
   border-radius: $radius;
@@ -40,7 +41,7 @@ $radius: 4px;
       height: 4.2em;
       padding: 1em;
       margin: 0 auto;
-      transform: translateY(-35px);
+      transform: translateY(-40px);
     }
     &__check {
       border: 1px dashed #FFF;
@@ -84,13 +85,18 @@ $radius: 4px;
         border-bottom: none;
       }
       &[type="submit"] {
-        background: $c-btn-color;;
+        background: $c-btn-color;
+        color: #000;
         cursor: pointer;
         border-bottom-left-radius: $radius - 2;
         border-bottom-right-radius: $radius - 2;
         text-align: center;
         margin: 3em auto 0 auto;
       }
+      
+    }
+    input::placeholder {
+        color: #FFF;
     }
   }
 }
