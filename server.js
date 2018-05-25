@@ -9,7 +9,7 @@ function start() {
   const bodyParser = require('body-parser');    
   const cors = require('cors');
 
-  app.use(morgan('dev'));                                        
+  app.use(morgan('tiny'));                                        
   app.use(bodyParser.urlencoded({'extended':'true'}));            
   app.use(bodyParser.json());                                     
   app.use(cors());
