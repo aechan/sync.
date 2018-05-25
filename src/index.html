@@ -19,9 +19,12 @@
       location.href = 'http://app.sync.theater';
     }
 
-    if (location.protocol != 'https:' && location.hostname !== 'localhost')
+    if (location.protocol != 'https:')
     {
-      //location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      if(location.hostname !== 'localhost') {
+        location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      }
+      //
     }
   </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
