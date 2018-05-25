@@ -1,8 +1,8 @@
 {
   "name": "sync.",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Alec Chan",
+  "homepage": "http://sync.theater/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -32,12 +32,14 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-device": "^0.4.2",
+    "firebase": "^5.0.4",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "morgan": "^1.9.0",
     "rxjs": "5.5.10",
     "serverless-client-s3": "^2.0.0",
     "sw-toolbox": "3.6.0",
+    "throng": "^4.0.0",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
