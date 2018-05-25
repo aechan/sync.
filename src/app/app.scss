@@ -15,34 +15,41 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 @font-face {
-    font-family: 'nunitobold';
-    src: url('../assets/fonts/nunito/nunito-bold-webfont.woff2') format('woff2'),
-         url('../assets/fonts/nunito/nunito-bold-webfont.woff') format('woff');
+    font-family: 'gothamroundedbold';
+    src: url('../assets/fonts/gotham-rounded/bold/gothamrounded-bold-webfont.woff') format('woff'),
+         url('../assets/fonts/gotham-rounded/bold/gothamrounded-bold-webfont.ttf') format('ttf');
     font-weight: bold;
     font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'nunitolight';
-    src: url('../assets/fonts/nunito/nunito-light-webfont.woff2') format('woff2'),
-         url('../assets/fonts/nunito/nunito-light-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'gothamroundedmedium';
+    src: url('../assets/fonts/gotham-rounded/medium/gothamrounded-medium-webfont.woff') format('woff'),
+         url('../assets/fonts/gotham-rounded/medium/gothamrounded-medium-webfont.ttf') format('ttf');
+    font-weight: 500;
     font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'nunitoregular';
-    src: url('../assets/fonts/nunito/nunito-regular-webfont.woff2') format('woff2'),
-         url('../assets/fonts/nunito/nunito-regular-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'gothamroundedbook';
+    src: url('../assets/fonts/gotham-rounded/book/gothamrounded-book-webfont.woff') format('woff'),
+         url('../assets/fonts/gotham-rounded/book/gothamrounded-book-webfont.ttf') format('ttf');
+    font-weight: 400;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'gothamroundedlight';
+    src: url('../assets/fonts/gotham-rounded/light/gothamrounded-light-webfont.woff') format('woff'),
+         url('../assets/fonts/gotham-rounded/book/gothamrounded-light-webfont.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
 }
 
 *:not(ion-icon) {
-    font-family: 'nunitoregular';
+    font-family: 'gothamroundedbook';
     font-weight: 400;
     box-sizing: border-box;
 }
