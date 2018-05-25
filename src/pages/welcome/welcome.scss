@@ -78,21 +78,24 @@ page-welcome {
     }
 
     #subtext {
+        font-family: 'nunitolight';
         font-size: 1.2rem;
         color: #fff;
         font-weight: 300;
     }
 
     #title {
-        font-weight: 900;
+        font-family: 'nunitobold';
+        font-weight: 700;
         color: #78F6FD;
         font-size: 3.5rem;
     }
 
     #desc {
+        font-family: 'nunitoregular';
         color: #fff;
         font-size: 2rem;
-        font-weight: 300;
+        font-weight: 400;
     }
 
     #sign-up {

@@ -12,6 +12,23 @@
 
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <div class='login'>
+    <form class='login_inner' [formGroup]='registerForm'>
+      <div class='login_inner__avatar'></div>
+      <input id='username' formControlName='username' placeholder='Give yourself a username' type='text'>
+      <input id='email' formControlName="email" placeholder='What is your email?' type='email'>
+      <input id='password' formControlName='password' placeholder='Choose a password' type='password'>
+      <input (click)="save()" type='submit' value='Sign up'>
+    </form>
+    <div class='login_inner__check'>
+      <div class='login_inner__check--complete'>
+        <ion-icon name="ios-checkmark" *ngIf="!error"></ion-icon>
+        <ion-icon style="color: red" name="ios-alert" *ngIf="error"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div class='loggedin'>
+    <h2></h2>
+  </div> 
 </ion-content>

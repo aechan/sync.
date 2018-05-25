@@ -15,13 +15,35 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 @font-face {
-    src: url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,900');
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'nunitobold';
+    src: url('../assets/fonts/nunito/nunito-bold-webfont.woff2') format('woff2'),
+         url('../assets/fonts/nunito/nunito-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
 }
 
-* {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 600;
+@font-face {
+    font-family: 'nunitolight';
+    src: url('../assets/fonts/nunito/nunito-light-webfont.woff2') format('woff2'),
+         url('../assets/fonts/nunito/nunito-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'nunitoregular';
+    src: url('../assets/fonts/nunito/nunito-regular-webfont.woff2') format('woff2'),
+         url('../assets/fonts/nunito/nunito-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*:not(ion-icon) {
+    font-family: 'nunitoregular';
+    font-weight: 400;
     box-sizing: border-box;
 }
 .sync-button {

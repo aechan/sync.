@@ -1,52 +1,34 @@
 <!--
-  Generated template for the LoginPage page.
+  Generated template for the RegisterPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color=trans>
-    <ion-title class="title">Log in to your Sync. account</ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding>
-  <div class="page">
-    <div class="container">
-      <div class="left">
-        <div class="login">Login</div>
-        <div class="eula">By logging in to Sync. you agree to the <a href="">terms of service</a>.</div>
-      </div>
-      <div class="right">
-        <svg viewBox="0 0 320 300">
-          <defs>
-            <linearGradient
-                            inkscape:collect="always"
-                            id="linearGradient"
-                            x1="13"
-                            y1="193.49992"
-                            x2="307"
-                            y2="193.49992"
-                            gradientUnits="userSpaceOnUse">
-              <stop
-                    style="stop-color:#A738F6;"
-                    offset="0"
-                    id="stop876" />
-              <stop
-                    style="stop-color:#5347F5;"
-                    offset="1"
-                    id="stop878" />
-            </linearGradient>
-          </defs>
-          <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
-        </svg>
-        <form class="form" [formGroup]="loginForm">
-          <label for="email">Email</label>
-          <input formControlName="email" id="email" type="email" [class.invalid]="!loginForm.controls.email.valid && (loginForm.controls.email.dirty || submitAttempt)">
-          <label for="password">Password</label>
-          <input formControlName="password" id="password" type="password" [class.invalid]="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)">
-          <input (click)="save()" type="submit" id="submit" value="Submit">
-        </form>
+
+    <ion-navbar color=trans>
+      <ion-title>Log in to your Sync account</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content>
+    <div class='login'>
+      <form class='login_inner' [formGroup]='loginForm'>
+        <div class='login_inner__avatar'></div>
+        <input id='email' formControlName="email" placeholder='What is your email?' type='email'>
+        <input id='password' formControlName='password' placeholder='What is your password?' type='password'>
+        <input (click)="save()" type='submit' value='Log in'>
+      </form>
+      <div class='login_inner__check'>
+        <div class='login_inner__check--complete'>
+          <ion-icon name="ios-checkmark" *ngIf="!error"></ion-icon>
+          <ion-icon style="color: red" name="ios-alert" *ngIf="error"></ion-icon>
+        </div>
       </div>
     </div>
-  </div>
-</ion-content>
+    <div class='loggedin'>
+      <h2></h2>
+    </div> 
+  </ion-content>
+  
