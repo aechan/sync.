@@ -4,6 +4,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import * as $ from 'jquery';
 import firebase from 'firebase';
 import { HomePage } from '../home/home';
+
 /**
  * Generated class for the loginPage page.
  *
@@ -30,6 +31,8 @@ export class LoginPage {
   ionViewDidLoad() {
     this.loggedin = $(".loggedin").hide();
   }
+
+
   save() {
     const t = 500;
     const that = this;

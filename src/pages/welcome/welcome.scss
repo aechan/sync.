@@ -8,7 +8,7 @@ page-welcome {
     }
 
     #head {
-        height: 12%;
+        height: 12vh;
         min-height: 74px;
         padding: 20px;
         margin-left: 40px;
@@ -42,42 +42,56 @@ page-welcome {
         margin-right: 40px;
         margin-left: 40px;
         border-top: 1px solid #9B7ADD;
-        height: 10%;
-        width: auto;
+        height: 10vh;
         color: #DCDCDC;
-        padding: 3%;
+        padding: 3vh;
         padding-top: 2%;
+        position: fixed;
+        bottom: 0;
+        width: calc(100vw - 100px);
     }
 
     
 
     #content {
         max-height: 85%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
+        height: 78vh;
         padding-left: 5%;
         padding-right: 5%;
-        margin-top: 20px;
+        padding-top: 5vh;
+        padding-bottom: 5vh; 
+        margin: 0 auto;
     }
 
     #left {
-        flex: 1;
-        padding: 1rem;  
-        padding-right: 0.5rem;      
+        height: 100%;
+        background: url(/assets/imgs/NEWCLOUD.svg) no-repeat center center;
+        background-origin: content-box;
+        float: left;
+        padding: 2rem;  
+        padding-right: 3rem;   
+        width: 40%;
+        margin-left: 10rem;
     }
-    #left img {
-        min-height: 245px;
-        max-height: 70vh;
 
+    #right-content {
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 3rem;
+    }
+
+    @media screen and (max-width: 727px) {
+        #left{ display: none; }
     }
 
     #right {
-        flex: 0.8;
+        margin-right: 10rem;
+        display: flex;
+     align-items: center;
+     justify-content: center;
+
+        height: 100%;
         padding: 1rem;
-  
-        padding-left: 0.5rem;
     }
 
     #subtext {

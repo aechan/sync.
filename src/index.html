@@ -21,7 +21,7 @@
 
     if (location.protocol != 'https:')
     {
-      if(location.hostname !== 'localhost') {
+      if(location.hostname !== 'localhost' && location.hostname !== '192.168.1.121') {
         location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
       }
       //
