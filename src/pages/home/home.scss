@@ -43,5 +43,148 @@ page-home {
             background-position: 0% 50%
         }
     }
+
+    #head {
+        height: 12vh;
+        min-height: 74px;
+        padding: 20px;
+        margin-left: 40px;
+        max-height: 100px;
+        margin-right: 40px;
+        width: auto;
+        border-bottom: 1px solid #9B7ADD;
+    }
+
+    #logo {
+        height: 100%;
+        min-height: 32px;
+        max-height: 50px;
+        top: 50%;
+
+    }
+
+    #head-elements {
+        display: block;
+        margin-left: 2vw;
+        position: absolute;
+        margin-top: 2.5vh;
+        top:0;
+        left: 15vw;
+        & a {
+            padding-bottom: 1rem;
+            margin-bottom: 2vh;
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #FFF;
+            border-bottom: 1px solid #FFF;
+            font-size: 3rem;
+        }
+        & a::hover {
+            background-color: #f2f2f2;
+        }
+    }
+
+    #logout {
+        display: block;
+        margin-left: 2vw;
+        position: absolute;
+        margin-top: 3.5vh;
+        top:0;
+        right: 10vw;
+        & a {
+            padding-bottom: 1rem;
+            margin-bottom: 2vh;
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #FFF;
+            border-bottom: 1px solid #FFF;
+            font-size: 2rem;
+        }
+        & a::hover {
+            background-color: #f2f2f2;
+        }
+    }
+
+
+    $fg: #000;
+    .cta {
+        position: absolute;
+        top: 0%;
+        left: 48vw;        
+        background: #fff;
+        font-weight: bold;
+        border-radius: 25px;
+        line-height: 50px;
+        height: 50px;
+        margin-top: 2.5vh;
+        width: 20vw;
+        text-align: center;
+        transition: width .2s ease-in-out;
+        cursor: pointer;
+        .hide { display: none; }
+        form { display: flex; } // I know, I know.
+        span {
+            opacity: 0;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn .3s ease-in-out;
+            animation-delay: .2s;
+            animation-fill-mode: forwards;
+        }
+        .input {
+            display: none;
+            opacity: 0;
+            flex: 3;
+            text-align: left;
+            input {
+                border: 0;
+                width: 240px;
+                height: 45px;
+                margin: 0 0 0 25px;
+                outline: none;
+                color: $fg;
+            }
+        }
+        .button {
+            display: none;
+            opacity: 0;
+            flex: 1;
+            button {
+                outline: none;
+                float: right;
+                padding: 0 15px;
+                height: 40px;
+                background: linear-gradient(to right, #4A4BF5, #A238F6);
+                border-radius: 25px;
+                color: #fff;
+                border: 0;
+                margin: 5px;
+                cursor: pointer;
+                transition: all .2s ease-in-out;
+                &:disabled{ color: #FC9F9D; opacity: .8;  }
+            }
+        }
+        &.sent { cursor: default; }
+        &.active {
+            width: 350px;
+            
+            text-align: left;
+            transition: width .2s ease-in-out;
+            cursor: default;
+            span { display: none; }
+            .input, .button {
+                display: block;
+                animation: fadeIn .3s ease-in-out;
+                animation-delay: .1s;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+    
+    // Fade + slight zoom
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: scale(.7); }
+        100% { opacity: 1; transform: scale(1); }
+    }
     
 }
