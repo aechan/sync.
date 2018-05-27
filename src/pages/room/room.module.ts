@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RoomPage } from './room';
 import {VgCoreModule} from 'videogular2/core';
@@ -17,5 +17,8 @@ import {VgBufferingModule} from 'videogular2/buffering';
     VgBufferingModule,
     IonicPageModule.forChild(RoomPage),
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class RoomPageModule {}

@@ -9,9 +9,14 @@
     <div id="playerMenu">
         <div id="innerContainer">
           <div id="chat">
-            <span id="theaterName">Theater Name</span>
+            <span id="theaterName">{{user.displayName}}'s theater</span>
             <span id="onlineCount">10</span>
             <div id="chatsep"></div>
+            <div id="messageArea"></div>
+            <div id="chatArea">
+              <input (input)="inputChange($event.target.value)" type="text" id="chatinput" maxlength="50">
+              <span #chatCount>{{ chatLength }}/50</span>
+            </div>
           </div>
           <div id="sideControls">
             <div id="settings"><ion-icon name="ios-cog-outline"></ion-icon></div>

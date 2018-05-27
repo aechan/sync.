@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as $ from 'jquery';
 import { HomePage } from '../home/home';
-
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -12,8 +12,12 @@ import { HomePage } from '../home/home';
 export class RoomPage {
   roomId: string;
   hideBPB: boolean = false;
+  chatLength: number = 0;
+  user: firebase.User;
   dragMenuState: boolean = false; // false for up true for down
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.user = firebase.auth().currentUser;
+
   }
 
   ionViewDidLoad() {
@@ -35,6 +39,10 @@ export class RoomPage {
       this.dragMenuState = !this.dragMenuState;
 
     }
+  }
+
+  inputChange(val) {
+    this.chatLength = val.length;
   }
 
   clickMenu() {

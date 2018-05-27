@@ -142,6 +142,29 @@ page-room {
         transition: all 0.5s ease-in-out;
     }
 
+    #messageArea {
+        width: 100%;
+        height: 73%;
+        padding: 5%;
+    }
+    #chatArea {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        margin-left: 3vw;
+        text-align: left;
+    }
+
+    #chatinput {
+        font-size: 2rem;
+        border-radius: 5px;
+        height: 6vh;
+        padding-left: 1vw;
+        border-style: none;
+        background: #F3F3F3;
+        margin: 10px;
+        width: 80%;
+    }
     vg-scrub-bar {
         width: 80vw;
         height: 20px;
