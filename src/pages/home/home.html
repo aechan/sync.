@@ -1,24 +1,22 @@
 
 <ion-content>
-    <div id="head">
-        <img id="logo" src="assets/imgs/syncwhite.svg">
-          <div id="head-elements">
-            <a href="#">What's Trending</a>
-            <a href="#">My Room</a>
-          </div>
-          <div #search class='cta'>
-            <span (click)="searchClick()">Find something to watch</span>
-            <form>
-              <div class='input'>
-                <input placeholder='Videos, TV shows, movies...'>
-              </div>
-              <div class='button'>
-                <button (click)="doSearch()" type='submit'>Search</button>
-              </div>
-            </form>
-          </div>
-          <div id="logout">
-            <a href="#" (click)="logout()">Log out <ion-icon name="ios-exit-outline"></ion-icon></a>
-          </div>
-    </div>
+  <nav id="head">
+    <ul class="container">
+      <img id="logo" src="assets/imgs/syncwhite.svg">
+      <a href="#">What's Trending</a>
+      <a href="#">My Room</a>
+      <div #search class='cta'>
+          <span (click)="searchClick()">Find something to watch</span>
+          <form>
+            <div class='input'>
+              <input placeholder='Videos, TV shows, movies...'>
+            </div>
+            <div class='button'>
+              <button (click)="doSearch()" type='submit'>Search</button>
+            </div>
+          </form>
+      </div>
+      <a href="#" id="logout" (click)="logout()">Log out <ion-icon name="ios-exit-outline"></ion-icon></a>
+    </ul>
+  </nav>
 </ion-content>
