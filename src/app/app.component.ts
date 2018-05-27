@@ -5,12 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebase from 'firebase';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { HomePage } from '../pages/home/home';
+import { RoomPage } from '../pages/room/room';
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
-  rootPage:any = WelcomePage;
+  rootPage:any = WelcomePage; // should be welcome page change later
   config = {
     apiKey: "AIzaSyBQnYkNcTjiWhTtB8E5MSO2LJ7z9qN9ckg",
     authDomain: "sync-9192c.firebaseapp.com",

@@ -12,6 +12,11 @@ import { PrivacyPageModule } from '../pages/privacy/privacy.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { RegisterPageModule } from '../pages/register/register.module';
 import { RoomPageModule } from '../pages/room/room.module';
+import {VgCoreModule} from 'videogular2/core';
+import {VgControlsModule} from 'videogular2/controls';
+import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+import {VgBufferingModule} from 'videogular2/buffering';
+
 @NgModule({
   declarations: [
     MyApp
@@ -22,6 +27,10 @@ import { RoomPageModule } from '../pages/room/room.module';
     HomePageModule,
     WelcomePageModule,
     PrivacyPageModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
     LoginPageModule,
     RegisterPageModule,
     RoomPageModule,

@@ -41,9 +41,11 @@
     "serverless-client-s3": "^2.0.0",
     "sw-toolbox": "3.6.0",
     "throng": "^4.0.0",
+    "videogular2": "^6.1.1",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.46",
     "@types/jquery": "^3.3.2",
     "typescript": "~2.6.2"
   },

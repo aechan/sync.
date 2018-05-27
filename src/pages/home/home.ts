@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as $ from 'jquery';
 import firebase from 'firebase';
 import { WelcomePage } from '../welcome/welcome';
+import { RoomPage } from '../room/room';
 
 /**
  * Generated class for the HomePage page.
@@ -31,6 +32,10 @@ export class HomePage {
     if (!this.search.nativeElement.contains(event.target)) {      
       this.closeSearch();
     }
+   }
+
+   goToRoom() {
+     this.navCtrl.setRoot(RoomPage);
    }
 
    logout() {

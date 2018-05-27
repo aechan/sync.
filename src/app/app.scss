@@ -63,3 +63,7 @@
 .sync-button:hover {
     background-color: #fff !important;
 }
+
+.no-scroll .scroll-content{
+    overflow: hidden;
+  }
