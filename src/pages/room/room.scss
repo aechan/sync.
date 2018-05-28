@@ -61,6 +61,38 @@ page-room {
         justify-content: space-between;
     }
 
+    #timeDisplay {
+        display: flex;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-bottom: 37px;
+        align-content: space-between;
+        flex-direction: row;
+    }
+
+    #currentTime {
+        font-family: 'gothamroundedbold' !important;
+        margin-right: auto;
+        font-size: 2vw;
+        margin-left: 2vw;
+    }
+
+    #leftTime {
+        font-family: 'gothamroundedbold' !important;
+        margin-left: auto;
+        font-size: 2vw;
+        margin-right: 2vw;
+    }
+
+    @media screen and (max-width: 630px) {
+        #timeDisplay {
+            display: none;
+        }
+    }
+
     @media screen and (max-width: 1100px) {
         #exit {
             font-size: 3em;
@@ -72,14 +104,21 @@ page-room {
             font-size: 3em;
         }
     }
-
+    #greenBubble {
+        display: inline-block;
+        width: 2vw;
+        height: 2vw;
+        transform: translateY(-3vh);
+        border-radius: 50%;
+        background: linear-gradient(to right, #DFF06E,#87F8A6);
+    }
     #exit {
         align-self: flex-end;
         border-radius: 50%;
         background: #969696;
         width: 8vw;
         height: 8vw;
-        font-size: 4em;
+        font-size: 4vw;
         color: #696969;
         margin-right: 2vw;
         margin-top: 3vh;
@@ -96,7 +135,7 @@ page-room {
         background: linear-gradient(to right, #4A4BF5, #A238F6);
         width: 8vw;
         height: 8vw;
-        font-size: 4em;
+        font-size: 4vw;
         color: #FFF;
         margin-right: 2vw;
         margin-top: 3vh;
@@ -113,7 +152,7 @@ page-room {
         background: linear-gradient(to right, #4A4BF5, #A238F6);
         width: 8vw;
         height: 8vw;
-        font-size: 4em;
+        font-size: 4vw;
         color: #FFF;
         margin-right: 2vw;
         margin-top: 3vh;
