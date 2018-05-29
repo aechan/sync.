@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as $ from 'jquery';
 import { HomePage } from '../home/home';
 import firebase from 'firebase';
-
 @IonicPage()
 @Component({
   selector: 'page-room',
@@ -21,7 +20,7 @@ export class RoomPage {
   }
 
   ionViewDidLoad() {
-    this.roomId = this.navParams.get('roomId');
+    this.roomId = this.navParams.get('roomId');    
   }
 
   dragMenu(event) {

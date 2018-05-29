@@ -36,11 +36,14 @@
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "jquery": "^3.3.1",
+    "jqueryui": "^1.11.1",
+    "lodash": "^4.17.10",
     "morgan": "^1.9.0",
     "ngx-clipboard": "^11.1.0",
     "rxjs": "5.5.10",
     "serverless-client-s3": "^2.0.0",
     "sw-toolbox": "3.6.0",
+    "taggle": "^1.13.0",
     "throng": "^4.0.0",
     "videogular2": "^6.1.1",
     "zone.js": "0.8.26"
@@ -48,6 +51,8 @@
   "devDependencies": {
     "@types/core-js": "^0.9.46",
     "@types/jquery": "^3.3.2",
+    "@types/jqueryui": "^1.12.2",
+    "@types/lodash": "^4.14.109",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project"

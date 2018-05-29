@@ -4,7 +4,6 @@ import * as $ from 'jquery';
 import firebase from 'firebase';
 import { WelcomePage } from '../welcome/welcome';
 import { RoomPage } from '../room/room';
-
 /**
  * Generated class for the HomePage page.
  *
@@ -14,48 +13,30 @@ import { RoomPage } from '../room/room';
 
 @IonicPage()
 @Component({
-  host: {
-    '(document:click)': 'onClick($event)',
-  },
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
-  @ViewChild('search') search: ElementRef;
-
+  TagsInput;
+  title: string = "";
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  onClick(event) {
-    console.log("Clicked: ");
-    console.log(event.target);
-    if (!this.search.nativeElement.contains(event.target)) {      
-      this.closeSearch();
-    }
-   }
+  goToRoom() {
+    this.navCtrl.setRoot(RoomPage);
+  }
 
-   goToRoom() {
-     this.navCtrl.setRoot(RoomPage);
-   }
-
-   logout() {
+  logout() {
     firebase.auth().signOut();
     this.navCtrl.setRoot(WelcomePage);
-   }
+  }
+
+  doSearch(tags) {
+    console.log(tags);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-  }
-  closeSearch() {
-    $(".cta").removeClass("active");
-
-  }
-  searchClick() {
-    $(".cta:not(.sent)").addClass("active");
-    $("input").focus();
-  }
-
-  doSearch() {
-      $(".cta").removeClass("active");
+    this.title = "Your activity feed"
   }
 }

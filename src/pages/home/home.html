@@ -4,19 +4,79 @@
     <ul class="container">
       <img id="logo" src="assets/imgs/syncwhite.svg">
       <a href="#">What's Trending</a>
-      <a href="#" (click)="goToRoom()">My Room</a>
-      <div #search class='cta'>
-          <span (click)="searchClick()">Find something to watch</span>
-          <form>
-            <div class='input'>
-              <input placeholder='Videos, TV shows, movies...'>
-            </div>
-            <div class='button'>
-              <button type='submit'>Search</button>
-            </div>
-          </form>
-      </div>
+      <a href="#" (click)="goToRoom()">My Theater</a>
+      <input type="text" id="search" placeholder="🔍 Find something to watch..."/>
       <a href="#" id="logout" (click)="logout()">Log out <ion-icon name="ios-exit-outline"></ion-icon></a>
     </ul>
   </nav>
+  <div id="main-content">
+    <h1 id="title-text">{{ title }}</h1>
+    <div class="support-grid"></div>
+
+    <div class="band">
+      <div class="item-1">
+            <a href="#" class="card">
+              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg);"></div>
+              <article>
+                <h1>Featured Theater Name</h1>
+                <span>@alec</span>
+              </article>
+            </a>
+      </div>
+      <div class="item-2">
+            <a href="#" class="card">
+              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/users-2.png);"></div>
+              <article>
+                <h1>Example Theater 2</h1>
+                <span>@user</span>
+              </article>
+            </a>
+      </div>
+      <div class="item-3">
+        <a href="#" class="card">
+          <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-5.jpg);"></div>
+          <article>
+            <h1>Example Theater 3</h1>
+            <span>@user</span>
+          </article>
+        </a>
+      </div>
+      <div class="item-4">
+            <a href="#" class="card">
+              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/landing.png);"></div>
+              <article>
+                <h1>Example Theater 4</h1>
+                <span>@user</span>
+              </article>
+            </a>
+      </div>
+      <div class="item-5">
+            <a href="#" class="card">
+              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/strange.jpg);"></div>
+              <article>
+                <h1>Example Theater 5</h1>
+                <span>@user</span>
+              </article>
+            </a>
+      </div>
+      <div class="item-6">
+        <a href="#" class="card">
+          <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flor.jpg);"></div>
+          <article>
+            <h1>Example Theater 6</h1>
+            <span>@user</span>
+          </article>
+        </a>
+      </div>
+      <div class="item-7">
+        <a href="#" class="card">
+          <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/china.png);"></div>
+          <article>
+            <h1>Example Theater 7</h1>
+            <span>@user</span>
+          </article>
+        </a>
+      </div>
+    </div>
+  </div>
 </ion-content>
