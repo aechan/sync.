@@ -44,7 +44,9 @@ page-room {
         margin-right: 20px;
         font-size: 6rem;
         font-family: 'gothamroundedbold';
-        color: #4A4BF5;
+        background: linear-gradient(to right, #DFF06E,#87F8A6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     #chatsep {
         margin-top: 20px;
@@ -104,14 +106,7 @@ page-room {
             font-size: 3em;
         }
     }
-    #greenBubble {
-        display: inline-block;
-        width: 2vw;
-        height: 2vw;
-        transform: translateY(-3vh);
-        border-radius: 50%;
-        background: linear-gradient(to right, #DFF06E,#87F8A6);
-    }
+    
     #exit {
         align-self: flex-end;
         border-radius: 50%;
@@ -184,12 +179,13 @@ page-room {
     #messageArea {
         width: 100%;
         height: 73vh;
-        padding: 5%;
+        padding: 5vh;
+        padding-bottom: 1vh;
     }
     #chatArea {
-        position: relative;
-        bottom: 0;
-        width: 100%;
+        position: absolute;
+        bottom: 10%;
+        width: 90%;
         margin-left: 3vw;
         text-align: left;
     }
