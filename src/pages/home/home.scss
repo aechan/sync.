@@ -112,7 +112,10 @@ page-home {
         font-family: 'gothamroundedmedium';
         background: transparent;
         color: white;
+        max-height: 50px;
+        max-width: 800px;
     }
+
     #search::placeholder {
         color: #C0C0C0;
     }
