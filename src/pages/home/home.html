@@ -14,7 +14,7 @@
     <div class="support-grid"></div>
 
     <div class="band">
-      <div *ngFor='let theater of theaters; let index = index;' [ngClass]="{ 'item-1': index === 0, 'item-2': index !== 0 }">
+      <div *ngFor='let theater of theaters; let index = index;' [ngClass]="{ 'item-1': theater.featured, 'item-2': !theater.featured }">
           <a href="#" (click)="pushRoom(theater.ownerId)" class="card">
             <div *ngIf="theater.image !== ''" class="thumb" [ngStyle]="setImage(index, theater.image)"></div>
             <div *ngIf="theater.image === ''" class="thumb" [ngStyle]="setImage(index)"></div>

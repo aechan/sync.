@@ -44,6 +44,7 @@ export class RegisterPage {
           roomName: firebase.auth().currentUser.displayName + "'s theater",
           currentUrl: '',
           image: '',
+          featured: false,
           ownerId: firebase.auth().currentUser.uid,
           ownerName: firebase.auth().currentUser.displayName,
           currentAttendees: [],
