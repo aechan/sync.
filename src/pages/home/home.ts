@@ -36,7 +36,7 @@ export class HomePage {
     if(img !== "") {
       style = {
         'background-image': 'url('+img+')',
-        'background-size': 'contain',
+        'background-size': 'cover',
         'background-repeat': 'no-repeat',
         'background-color': colors[index % colors.length]
       };
