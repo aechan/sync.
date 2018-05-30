@@ -13,14 +13,18 @@ export class RoomPage {
   hideBPB: boolean = false;
   chatLength: number = 0;
   user: firebase.User;
+  roomName: string = '';
   dragMenuState: boolean = false; // false for up true for down
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user = firebase.auth().currentUser;
-
+    this.roomId = navParams.get('roomId');
+    firebase.database().ref('/rooms/'+this.roomId).on('value', (snap)=>{
+      const room = snap.val();
+      this.roomName = room.roomName;
+    });
   }
 
   ionViewDidLoad() {
-    this.roomId = this.navParams.get('roomId');    
   }
 
   dragMenu(event) {

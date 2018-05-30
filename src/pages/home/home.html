@@ -14,68 +14,15 @@
     <div class="support-grid"></div>
 
     <div class="band">
-      <div class="item-1">
-            <a href="#" class="card">
-              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg);"></div>
-              <article>
-                <h1>Featured Theater Name</h1>
-                <span>@alec</span>
-              </article>
-            </a>
-      </div>
-      <div class="item-2">
-            <a href="#" class="card">
-              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/users-2.png);"></div>
-              <article>
-                <h1>Example Theater 2</h1>
-                <span>@user</span>
-              </article>
-            </a>
-      </div>
-      <div class="item-3">
-        <a href="#" class="card">
-          <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-5.jpg);"></div>
-          <article>
-            <h1>Example Theater 3</h1>
-            <span>@user</span>
-          </article>
-        </a>
-      </div>
-      <div class="item-4">
-            <a href="#" class="card">
-              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/landing.png);"></div>
-              <article>
-                <h1>Example Theater 4</h1>
-                <span>@user</span>
-              </article>
-            </a>
-      </div>
-      <div class="item-5">
-            <a href="#" class="card">
-              <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/strange.jpg);"></div>
-              <article>
-                <h1>Example Theater 5</h1>
-                <span>@user</span>
-              </article>
-            </a>
-      </div>
-      <div class="item-6">
-        <a href="#" class="card">
-          <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flor.jpg);"></div>
-          <article>
-            <h1>Example Theater 6</h1>
-            <span>@user</span>
-          </article>
-        </a>
-      </div>
-      <div class="item-7">
-        <a href="#" class="card">
-          <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/china.png);"></div>
-          <article>
-            <h1>Example Theater 7</h1>
-            <span>@user</span>
-          </article>
-        </a>
+      <div *ngFor='let theater of theaters; let index = index;' [ngClass]="{ 'item-1': index === 0, 'item-2': index !== 0 }">
+          <a href="#" (click)="pushRoom(theater.ownerId)" class="card">
+            <div *ngIf="theater.image !== ''" class="thumb" [ngStyle]="setImage(index, theater.image)"></div>
+            <div *ngIf="theater.image === ''" class="thumb" [ngStyle]="setImage(index)"></div>
+            <article>
+              <h1>{{ theater.roomName }}</h1>
+              <span>{{ theater.ownerName }}</span>
+            </article>
+          </a>
       </div>
     </div>
   </div>

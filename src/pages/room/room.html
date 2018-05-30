@@ -8,9 +8,9 @@
 <ion-content class="no-scroll" no-bounce>
     <div id="playerMenu">
         <div id="innerContainer">
-          <div id="chat">
-            <span id="theaterName">{{user.displayName}}'s theater</span>
-            <div id="onlineCount">10 <div id="greenBubble"></div></div>
+          <div id="chat" class="mainBox">
+            <span id="theaterName">{{roomName}}</span>
+            <div id="onlineCount">10</div>
             <div id="chatsep"></div>
             <div id="messageArea"></div>
             <div id="chatArea">
@@ -18,8 +18,17 @@
               <span #chatCount>{{ chatLength }}/50</span>
             </div>
           </div>
+          <div id="settingsBox" class="mainBox">
+            <div *ngIf="!amOwner">
+              <h1>You are not the owner of this theater</h1>
+            </div>
+            <div *ngIf="amOwner">
+              <h1>Your theater settings</h1>
+              <input type="text" placeholder="Set video URL">
+            </div>
+          </div>
           <div id="sideControls">
-            <div id="settings"><ion-icon name="ios-cog-outline"></ion-icon></div>
+            <div (click)="showSettings()" id="settings"><ion-icon name="ios-cog-outline"></ion-icon></div>
             <div id="link"><ion-icon name="ios-link"></ion-icon></div>
             <div (click)="goHome()" id="exit"><ion-icon name="ios-exit-outline"></ion-icon></div>
           </div>

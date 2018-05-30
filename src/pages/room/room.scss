@@ -24,7 +24,7 @@ page-room {
         margin: auto;
     }
 
-    #chat {
+    .mainBox {
         background-color: #FFF;
         border-radius: 20px;
         margin: 15px;
@@ -32,6 +32,10 @@ page-room {
         height: 90%;
         float:left;
     }
+    #settingsBox {
+        display:none;
+    }
+
     #chat #theaterName {
         margin-left: 20px;
         font-size: 4rem;
@@ -61,6 +65,11 @@ page-room {
         height: 90%;
         align-items: center;
         justify-content: space-between;
+    }
+
+    #sideControls div {
+        max-width: 90px;
+        max-height: 90px;
     }
 
     #timeDisplay {
@@ -231,6 +240,14 @@ page-room {
         box-shadow: none;
         opacity: 1;
         transform: translateY(-12px) translateX(-2px);
+        z-index: 9999999999;
+        transition: all 0.2s ease-in;
+        pointer-events: none;
+    }
+    .sliderhover {
+        height: 50px;
+        width: 50px;
+        transform: translateY(-17px) translateX(-7px);
     }
 
     #scrubBar {
@@ -248,10 +265,5 @@ page-room {
 
     }
 
-    #knob {
-        height: 40px;
-        width: 40px;
-        transform: translateY(-5px);
-        -webkit-user-drag: none;
-    }
+    
 }

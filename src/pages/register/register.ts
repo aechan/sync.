@@ -36,6 +36,23 @@ export class RegisterPage {
     const that = this;
     firebase.auth().createUserWithEmailAndPassword(that.registerForm.controls['email'].value, that.registerForm.controls['password'].value).then(user => {
       firebase.auth().currentUser.updateProfile({displayName: this.registerForm.controls['username'].value, photoURL: ''}).then(() => {
+        firebase.auth().currentUser.sendEmailVerification();
+        /**
+         * Allocate a room for this user
+         */
+        firebase.database().ref('/rooms/'+firebase.auth().currentUser.uid).set({
+          roomName: firebase.auth().currentUser.displayName + "'s theater",
+          currentUrl: '',
+          image: '',
+          ownerId: firebase.auth().currentUser.uid,
+          ownerName: firebase.auth().currentUser.displayName,
+          currentAttendees: [],
+          state: {
+            currentTime: '',
+            paused: true,
+          }
+        });
+
         $(".login_inner__check").css({
           'animation': '',
         });

@@ -26,10 +26,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
     });
     firebase.initializeApp(this.config);
-    firebase.auth().onAuthStateChanged(user => {
+    const authSub = firebase.auth().onAuthStateChanged(user => {
       if(user !== null) {
         this.rootPage = HomePage;
+        authSub();
       }
+      
     });
   }
 }
