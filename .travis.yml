@@ -3,7 +3,7 @@ node_js:
   - "node"
 cache:
   directories:
-    - $HOME/.npm
+    - node_modules
 install:
   - npm install
 script: npm run postinstall
