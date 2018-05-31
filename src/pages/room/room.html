@@ -13,7 +13,8 @@
           </div>
           <div id="settingsBox" class="mainBox">
             <div *ngIf="!amOwner">
-              <h1>You are not the owner of this theater</h1>
+              <h1>You are not the owner of this theater!</h1>
+              <p>Editing settings is restricted to the theater owner only.</p>
             </div>
             <div *ngIf="amOwner">
               <h1>Your theater settings</h1>
@@ -21,7 +22,7 @@
             </div>
           </div>
           <div id="sideControls">
-            <div (click)="showSettings()" id="settings"><ion-icon name="ios-cog-outline"></ion-icon></div>
+            <div (click)="toggleSettings()" id="settings"><ion-icon name="ios-cog-outline"></ion-icon></div>
             <div id="link"><ion-icon name="ios-link"></ion-icon></div>
             <div (click)="goHome()" id="exit"><ion-icon name="ios-exit-outline"></ion-icon></div>
           </div>

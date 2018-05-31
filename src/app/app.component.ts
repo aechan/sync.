@@ -6,12 +6,13 @@ import * as firebase from 'firebase';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { HomePage } from '../pages/home/home';
 import { RoomPage } from '../pages/room/room';
+import { LoadingPage } from '../pages/loading/loading';
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
-  rootPage:any = WelcomePage; // should be welcome page change later
+  rootPage:any = LoadingPage; // should be welcome page change later
   config = {
     apiKey: "AIzaSyBQnYkNcTjiWhTtB8E5MSO2LJ7z9qN9ckg",
     authDomain: "sync-9192c.firebaseapp.com",
@@ -27,9 +28,12 @@ export class MyApp {
     });
     firebase.initializeApp(this.config);
     const authSub = firebase.auth().onAuthStateChanged(user => {
+      console.log(user);
       if(user !== null) {
         this.rootPage = HomePage;
         authSub();
+      } else {
+        this.rootPage = WelcomePage;
       }
       
     });

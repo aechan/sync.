@@ -16,6 +16,8 @@ import {VgCoreModule} from 'videogular2/core';
 import {VgControlsModule} from 'videogular2/controls';
 import {VgOverlayPlayModule} from 'videogular2/overlay-play';
 import {VgBufferingModule} from 'videogular2/buffering';
+import { LoadingPage } from '../pages/loading/loading';
+import { LoadingPageModule } from '../pages/loading/loading.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import {VgBufferingModule} from 'videogular2/buffering';
     BrowserModule,
     HomePageModule,
     WelcomePageModule,
+    LoadingPageModule,
     PrivacyPageModule,
     VgCoreModule,
     VgControlsModule,
@@ -40,7 +43,7 @@ import {VgBufferingModule} from 'videogular2/buffering';
   entryComponents: [
     MyApp,
     WelcomePage,
-
+    LoadingPage
   ],
   providers: [
     StatusBar,

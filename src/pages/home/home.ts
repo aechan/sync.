@@ -83,7 +83,10 @@ export class HomePage {
     console.log('ionViewDidLoad HomePage');
     this.title = "Your activity feed";
     firebase.database().ref('/rooms').on('value', (snap) => {
-      this.theaters = this.snapshotToArray(snap);
+      let array = this.snapshotToArray(snap);
+      let idx = array.findIndex(function (obj) { return obj.featured; });
+      array.splice(0, 0, array.splice(idx, 1)[0]);
+      this.theaters = array;
     });
   }
 }

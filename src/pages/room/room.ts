@@ -13,7 +13,9 @@ export class RoomPage {
   hideBPB: boolean = false;
   chatLength: number = 0;
   user: firebase.User;
+  settingsShown: boolean = false;
   roomName: string = '';
+  amOwner: boolean = false;
   dragMenuState: boolean = false; // false for up true for down
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user = firebase.auth().currentUser;
@@ -22,9 +24,22 @@ export class RoomPage {
       const room = snap.val();
       this.roomName = room.roomName;
     });
+    this.amOwner = (firebase.auth().currentUser.uid === this.roomId);
   }
 
   ionViewDidLoad() {
+  }
+
+  toggleSettings() {
+    this.settingsShown = !this.settingsShown;
+
+    if(this.settingsShown) {
+      $("#settingsBox").show();
+      $("#chat").hide();
+    } else {
+      $("#settingsBox").hide();
+      $("#chat").show();
+    }
   }
 
   dragMenu(event) {
