@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "node"
+cache:
+  directories:
+    - $HOME/.npm
 install:
-  - npm ci
+  - npm install
 script: npm run postinstall
