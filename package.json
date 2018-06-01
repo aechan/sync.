@@ -6,11 +6,11 @@
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
-    "postinstall": "ionic-app-scripts build",
+    "postinstall": "ionic-app-scripts build --aot --minifyjs --minifycss --release",
     "start": "node server.js",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
+    "ionic:build": "node --max_old_space_size=4096 ./node_modules/.bin/ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
