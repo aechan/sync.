@@ -65,6 +65,8 @@ class CrunchyrollAPI {
                 res = resp;
             }
         });
+
+        
     }
 
 }
