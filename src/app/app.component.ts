@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebase from 'firebase';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { HomePage } from '../pages/home/home';
-import { RoomPage } from '../pages/room/room';
 import { LoadingPage } from '../pages/loading/loading';
 @Component({
   templateUrl: 'app.html'
