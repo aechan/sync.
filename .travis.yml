@@ -4,6 +4,4 @@ node_js:
 cache:
   directories:
     - node_modules
-install:
-  - npm install
 script: npm run postinstall

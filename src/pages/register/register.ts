@@ -47,10 +47,11 @@ export class RegisterPage {
           featured: false,
           ownerId: firebase.auth().currentUser.uid,
           ownerName: firebase.auth().currentUser.displayName,
-          currentAttendees: [],
           state: {
             currentTime: '',
             paused: true,
+          },
+          users: {
           }
         });
 

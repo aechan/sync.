@@ -11,7 +11,7 @@ import { LoadingPage } from '../pages/loading/loading';
 })
 
 export class MyApp {
-  rootPage:any = LoadingPage; // should be welcome page change later
+  rootPage:any = LoadingPage;
   config = {
     apiKey: "AIzaSyBQnYkNcTjiWhTtB8E5MSO2LJ7z9qN9ckg",
     authDomain: "sync-9192c.firebaseapp.com",

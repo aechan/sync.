@@ -9,6 +9,7 @@ import firebase from 'firebase';
   templateUrl: 'room.html',
 })
 export class RoomPage {
+  
   roomId: string;
   hideBPB: boolean = false;
   chatLength: number = 0;
@@ -17,6 +18,8 @@ export class RoomPage {
   roomName: string = '';
   amOwner: boolean = false;
   dragMenuState: boolean = false; // false for up true for down
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user = firebase.auth().currentUser;
     this.roomId = navParams.get('roomId');
