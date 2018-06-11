@@ -74,8 +74,17 @@ export class HomePage {
     this.navCtrl.setRoot(WelcomePage);
   }
 
-  doSearch(tags) {
-    console.log(tags);
+  doSearch(str: string) {
+    console.log(str);
+    str = str.toLowerCase();
+    firebase.database().ref('/rooms').orderByChild('roomNameLower').startAt(str).endAt(str+"\uf8ff").on('value', (snap) => {
+      let array = this.snapshotToArray(snap);
+      if(array && array.length > 0) {
+        let idx = array.findIndex(function (obj) { return obj.featured; });
+        array.splice(0, 0, array.splice(idx, 1)[0]);
+      }
+      this.theaters = array;
+    });
   }
 
   ionViewDidLoad() {

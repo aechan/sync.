@@ -5,7 +5,7 @@
       <img id="logo" src="assets/imgs/syncwhite.svg">
       <a href="#">What's Trending</a>
       <a href="#" (click)="goToRoom()">My Theater</a>
-      <input type="text" id="search" placeholder="🔍 Find something to watch..."/>
+      <input type="text" (input)="doSearch($event.target.value)" id="search" placeholder="🔍 Find something to watch..."/>
       <a href="#" id="logout" (click)="logout()">Log out <ion-icon name="ios-exit-outline"></ion-icon></a>
     </ul>
   </nav>

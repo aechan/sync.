@@ -3,7 +3,7 @@
         <div id="innerContainer">
           <div id="chat" class="mainBox">
             <span id="theaterName">{{roomName}}</span>
-            <div id="onlineCount">10</div>
+            <div id="onlineCount"></div>
             <div id="chatsep"></div>
             <div id="messageArea"></div>
             <div id="chatArea">
@@ -18,7 +18,10 @@
             </div>
             <div *ngIf="amOwner">
               <h1>Your theater settings</h1>
-              <input type="text" placeholder="Set video URL"><button class="sync-button" (click)="setVideoURL()">Submit</button>
+              <div class="input-group"><input id="videoURL" type="text" placeholder="Set video URL"><button class="sync-button" (click)="setVideoURL()">Submit</button></div>
+              <div class="input-group"><input id="roomName" type="text" placeholder="Set a custom room name"><button class="sync-button" (click)="setRoomName()">Submit</button></div>
+              <div class="input-group"><input id="roomImage" type="text" placeholder="Set a custom room image"><button class="sync-button" (click)="setRoomImage()">Submit</button></div>
+
             </div>
           </div>
           <div id="sideControls">

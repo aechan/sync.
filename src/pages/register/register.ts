@@ -42,6 +42,7 @@ export class RegisterPage {
          */
         firebase.database().ref('/rooms/'+firebase.auth().currentUser.uid).set({
           roomName: firebase.auth().currentUser.displayName + "'s theater",
+          roomNameLower: firebase.auth().currentUser.displayName.toLowerCase() + "'s theater",
           currentUrl: '',
           image: '',
           featured: false,
