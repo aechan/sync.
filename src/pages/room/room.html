@@ -25,13 +25,13 @@
             </div>
           </div>
           <div id="sideControls">
-            <div (click)="toggleSettings()" id="settings"><ion-icon name="ios-cog-outline"></ion-icon></div>
-            <div id="link"><ion-icon name="ios-link"></ion-icon></div>
-            <div (click)="goHome()" id="exit"><ion-icon name="ios-exit-outline"></ion-icon></div>
+            <div (click)="toggleSettings()" id="settings" tooltip="Toggle Settings" positionH="left"><ion-icon name="ios-cog-outline"></ion-icon></div>
+            <div id="link" tooltip="Copy Theater URL" positionH="left"><ion-icon name="ios-link"></ion-icon></div>
+            <div (click)="goHome()" tooltip="Exit" positionH="left" id="exit"><ion-icon name="ios-exit-outline"></ion-icon></div>
           </div>
         </div>
     </div>
-    <vg-player>
+    <vg-player (onPlayerReady)="onPlayerReady($event)">
         <div (click)="clickMenu()" (pan)="dragMenu($event)" id="dragBar"></div>
         <vg-overlay-play id="bigPlayButton">
           <img src="assets/imgs/bigplaybutton.png">
