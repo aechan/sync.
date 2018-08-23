@@ -75,7 +75,6 @@ export class HomePage {
   }
 
   doSearch(str: string) {
-    console.log(str);
     str = str.toLowerCase();
     firebase.database().ref('/rooms').orderByChild('roomNameLower').startAt(str).endAt(str+"\uf8ff").on('value', (snap) => {
       let array = this.snapshotToArray(snap);
