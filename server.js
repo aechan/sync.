@@ -22,8 +22,11 @@ function start() {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
-   
+  
   app.use(express.static('www'));
+  app.get('/getconfig', function(req, res) {
+    res.send(process.env.FIREBASE_CONF);
+  });
   app.set('port', process.env.PORT || 3000);
   app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
