@@ -9,7 +9,8 @@ import { Observable, Subscriber } from 'rxjs';
 export class SyncRoom {
     private roomId: string;
 
-    constructor(roomId: string, validationListener: (obs: Observable<boolean>) => any) {
+    constructor(roomId: string,
+        validationListener: (obs: Observable<boolean>) => any) {
         this.roomId = roomId;
         validationListener(this.roomIsValid);
     }
