@@ -24,6 +24,16 @@ page-room {
         margin: auto;
     }
 
+    #chatBubble {
+        background-color: #969696;
+        border-radius: 20px;
+        color: #fff;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        width: 20%;
+        padding: 1em;
+    }
+
     .mainBox {
         background-color: #FFF;
         border-radius: 20px;
@@ -70,8 +80,8 @@ page-room {
     }
 
     #sideControls div {
-        max-width: 90px;
-        max-height: 90px;
+        max-width: 110px;
+        max-height: 110px;
     }
 
     #timeDisplay {
@@ -105,18 +115,6 @@ page-room {
             display: none;
         }
     }
-
-    @media screen and (max-width: 1100px) {
-        #exit {
-            font-size: 3em;
-        }
-        #link {
-            font-size: 3em;
-        }
-        #settings {
-            font-size: 3em;
-        }
-    }
     
     #exit {
         align-self: flex-end;
@@ -124,7 +122,7 @@ page-room {
         background: #969696;
         width: 8vw;
         height: 8vw;
-        font-size: 4vw;
+        font-size: 5rem;
         color: #696969;
         margin-right: 2vw;
         margin-top: 3vh;
@@ -141,7 +139,7 @@ page-room {
         background: linear-gradient(to right, #4A4BF5, #A238F6);
         width: 8vw;
         height: 8vw;
-        font-size: 4vw;
+        font-size: 5rem;
         color: #FFF;
         margin-right: 2vw;
         margin-top: 3vh;
@@ -149,16 +147,21 @@ page-room {
         align-items: center;
     }
 
+    .disable-vg {
+        pointer-events: none;
+   }
+
     #settings ion-icon {
         margin: auto auto;
     }
+
     #link {
         align-self: flex-end;
         border-radius: 50%;
         background: linear-gradient(to right, #4A4BF5, #A238F6);
         width: 8vw;
         height: 8vw;
-        font-size: 4vw;
+        font-size: 5rem;
         color: #FFF;
         margin-right: 2vw;
         margin-top: 3vh;
@@ -169,6 +172,8 @@ page-room {
     #link ion-icon {
         margin: auto auto;
     }
+
+    
 
     #dragBar {
         position: fixed;

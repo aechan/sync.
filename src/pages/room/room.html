@@ -5,9 +5,13 @@
             <span id="theaterName">{{roomName}}</span>
             <div id="onlineCount"></div>
             <div id="chatsep"></div>
-            <div id="messageArea"></div>
+            <div id="messageArea" *ngIf="chats.length > 0">
+              <div id="chatBubble" *ngFor="let chat of chats" > 
+                {{ chat.client.name }}: {{ chat.message }} 
+              </div>
+            </div>
             <div id="chatArea">
-              <input (input)="inputChange($event.target.value)" type="text" id="chatinput" maxlength="50">
+              <input (input)="inputChange($event.target.value)" (keyup.enter)="chat($event.target.value)" type="text" id="chatinput" maxlength="50">
               <span #chatCount>{{ chatLength }}/50</span>
             </div>
           </div>
@@ -31,8 +35,9 @@
           </div>
         </div>
     </div>
-    <vg-player (onPlayerReady)="onPlayerReady($event)">
-        <div (click)="clickMenu()" (pan)="dragMenu($event)" id="dragBar"></div>
+    <div (click)="clickMenu()" (pan)="dragMenu($event)" id="dragBar"></div>
+
+    <vg-player [ngClass]="{ 'disable-vg': !amOwner }" (onPlayerReady)="onPlayerReady($event)">
         <vg-overlay-play id="bigPlayButton">
           <img src="assets/imgs/bigplaybutton.png">
         </vg-overlay-play>
@@ -46,10 +51,6 @@
         </vg-scrub-bar>
     
     
-        <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-            <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
-            <source src="http://static.videogular.com/assets/videos/videogular.ogg" type="video/ogg">
-            <source src="http://static.videogular.com/assets/videos/videogular.webm" type="video/webm">
-        </video>
+        <video [vgMedia]="media" #media [src]="state.url" id="singleVideo" preload="auto" crossorigin></video>
     </vg-player>
 </ion-content>

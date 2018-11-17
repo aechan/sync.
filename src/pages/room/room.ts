@@ -4,7 +4,7 @@ import * as $ from 'jquery';
 import { HomePage } from '../home/home';
 import firebase from 'firebase';
 import {VgAPI} from 'videogular2/core';
-import { ConstStrs } from '../../utils/Utils';
+import io from 'socket.io-client';
 
 @IonicPage()
 @Component({
@@ -20,107 +20,130 @@ export class RoomPage {
   roomName: string = '';
   amOwner: boolean = false;
   dragMenuState: boolean = false; // false for up true for down
-  currentVideoURL: string = "";
+
+  state: {
+    url: string;
+    time: number;
+    playing: boolean;
+  };
+
   sources;
   api:VgAPI;
+  socket: SocketIOClient.Socket;
+  clients: {}[];
+  chats: Array<{message: string; client: { uid: string; name: string; imageURL: string, roomId: string }}>;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user = firebase.auth().currentUser;
     this.roomId = navParams.get('roomId');
-    firebase.database().ref(ConstStrs.ROOMS + this.roomId).on('value', (snap)=>{
-      const room = snap.val();
-      this.roomName = room.roomName;
-      this.amOwner = (firebase.auth().currentUser.uid === room.ownerId);
-    });
+    this.socket = io('http://localhost:3000');
+    this.chats = [];
+    this.amOwner = false;
+    this.state = {
+      url: `http://localhost:3000/rooms/${this.roomId}/video`,
+      time: 0,
+      playing: false
+    };
   }
 
-  onPlayerReady(api:VgAPI) {
+  async onPlayerReady(api:VgAPI) {
     this.api = api;
 
     /** setup event subscribers for video related events */
-    // subscribe to the room's video url changing
-    firebase.database().ref(ConstStrs.ROOMS + this.roomId).on('value', (snap)=> {
-      if(snap.val().currentUrl !== this.currentVideoURL) {
-        this.currentVideoURL = snap.val().currentUrl;
-        this.setCurrentVideo(this.currentVideoURL);
+    // make the socket connect
+    // setup evt handler for when we actually
+    // join the room
+    const userToken = await firebase.auth().currentUser.getIdTokenResult();
+    this.socket.on('connect', () => {
+      this.socket.emit('Authenticate', userToken.token);
+      this.socket.on('Authenticated', () => {
+        this.socket.emit("JoinRoom", this.roomId);
+      });
+      this.socket.on('JoinedRoom', (roomData) => {
+        
+      });
+      this.socket.on('RoomInfo', (roomInfo) => {
+        this.clients = roomInfo.clients;
+        $("#onlineCount").text(`${this.clients.length} online`);
+      });
+      this.socket.on('Chat', (data) => {
+        this.recievedChat(data);
+      });
+
+      this.socket.on('Owner', () => {
+        this.amOwner = true;
+        this.api.getDefaultMedia().subscriptions.play.subscribe(() => {
+          this.state.playing = true;
+          this.socket.emit('SetVideoPlaying', this.state.playing);
+        });
+        this.api.getDefaultMedia().subscriptions.pause.subscribe(() => {
+          this.state.playing = false;
+          this.socket.emit('SetVideoPlaying', this.state.playing);
+        });
+      });
+
+      this.socket.on('Sync', (data: { time: number, url: string, playing: boolean }) =>  {
+        this.sync(data);
+      })
+
+    })
+
+  }
+
+  sync(data: { time: number, url: string, playing: boolean } ) {
+    console.log('syncing');
+    if(this.state.url !== data.url) {
+      //this.setCurrentVideo(data.url);
+    }
+    if(this.state.playing !== data.playing) {
+      if(data.playing) {
+        this.api.play();
+      } else {
+        this.api.pause();
       }
-    });
+    }
+    this.state = data;
   }
 
   setCurrentVideo(source: string) {
-    if(!this.amOwner) return;
     this.sources = new Array<Object>();
     this.sources.push({
       src: source,
       type: "video/mp4"
     });
-    this.api.getDefaultMedia().currentTime = 0;
-    this.api.play();
   }
 
   setVideoURL() {
+    console.log('set video url');
     if(!this.amOwner || $("#videoURL").val().toString().trim() === "") return;
-
-    firebase.database().ref(ConstStrs.ROOMS+this.roomId).update({
-      currentUrl: $("#videoURL").val()
-    }).then(()=>{
-      $("#videoURL").val("");
-    });
+    this.socket.emit('SetVideoURL', $("#videoURL").val());
   }
-
-
-  snapshotToArray(snapshot) {
-    var returnArr = [];
-
-    snapshot.forEach(function(childSnapshot) {
-        var item = childSnapshot.val();
-        item.key = childSnapshot.key;
-
-        returnArr.push(item);
-    });
-
-    return returnArr;
-  };
 
   ionViewDidLoad() {
 
     // add ourselves to the viewer list
-    firebase.database().ref(ConstStrs.ROOMS+this.roomId+ConstStrs.VIEWERS+this.user.uid).push({
-      name: this.user.displayName 
-    });
+    
 
     /** setup event subscribers for non video actions **/
     // subscribe to number of viewers changed
-    firebase.database().ref(ConstStrs.ROOMS+this.roomId+ConstStrs.VIEWERS).on('value', (snap)=>{
-      let arr = this.snapshotToArray(snap);
-      $("#onlineCount").text(arr.length);
-    });
-
+    
   }
 
   ionViewWillUnload() {
-    firebase.database().ref(ConstStrs.ROOMS+this.roomId+ConstStrs.VIEWERS+this.user.uid).remove();
+
   }
 
   setRoomName() {
     if(!this.amOwner || $("#roomName").val().toString().trim() === "") return;
 
-    firebase.database().ref(ConstStrs.ROOMS+this.roomId).update({
-      roomName: $("#roomName").val(),
-      roomNameLower: $("#roomName").val().toString().toLowerCase()
-    }).then(()=>{
-      $("#roomName").val("");
-    });
+    
   }
 
   setRoomImage() {
     if(!this.amOwner || $("#roomImage").val().toString().trim() === "") return;
 
-    firebase.database().ref(ConstStrs.ROOMS+this.roomId).update({
-      image: $("#roomImage").val()
-    }).then(()=>{
-      $("#roomImage").val("");
-    });
+    
   }
 
   toggleSettings() {
@@ -156,6 +179,16 @@ export class RoomPage {
     this.chatLength = val.length;
   }
 
+  chat(message) {
+    this.socket.emit('Chat', message);
+    $("#chatinput").val("");
+    this.chatLength = 0;
+  }
+
+  recievedChat(data: {message: string; client: { uid: string; name: string; imageURL: string, roomId: string }}) {
+    this.chats.push(data);
+  }
+
   clickMenu() {
     if(this.dragMenuState) {
       $("#playerMenu").slideUp(500);
@@ -175,6 +208,7 @@ export class RoomPage {
   }
 
   goHome() {
+    this.socket.disconnect();
     this.navCtrl.setRoot(HomePage);
   }
 
