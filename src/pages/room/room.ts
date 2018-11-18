@@ -39,7 +39,7 @@ export class RoomPage {
     this.roomId = navParams.get('roomId');
     
     const hostname = window.location.hostname === "localhost" ? window.location.hostname : "sync-server-v2.herokuapp.com";
-    this.socket = io(`http://${hostname}:3000`);
+    this.socket = io(`http://${hostname}:48192`);
     this.chats = [];
     this.amOwner = false;
     this.state = {
