@@ -5,7 +5,6 @@ import { HomePage } from '../home/home';
 import firebase from 'firebase';
 import {VgAPI} from 'videogular2/core';
 import io from 'socket.io-client';
-import videojs from 'video.js';
 
 @IonicPage()
 @Component({
@@ -23,10 +22,11 @@ export class RoomPage {
   dragMenuState: boolean = false; // false for up true for down
 
   state: {
-    url: string;
+    videoURL: string;
     time: number;
     playing: boolean;
   };
+  roomDataInitiallyLoaded = false;
 
   sources;
   api:VgAPI;
@@ -40,11 +40,13 @@ export class RoomPage {
     this.roomId = navParams.get('roomId');
     
     const hostname = window.location.hostname === "localhost" ? window.location.hostname : "sync-server-v2.herokuapp.com";
-    this.socket = io(`https://${hostname}`);
+    const protocol = window.location.hostname === "localhost" ? "http://" : "https://";
+    const port = window.location.hostname === "localhost" ? 3000 : 80;
+    this.socket = io(`${protocol}${hostname}:${port}`);
     this.chats = [];
     this.amOwner = false;
     this.state = {
-      url: ``,
+      videoURL: ``,
       time: 0,
       playing: false
     };
@@ -84,10 +86,17 @@ export class RoomPage {
         this.api.getDefaultMedia().subscriptions.pause.subscribe(() => {
           this.state.playing = false;
         });
+        this.api.getDefaultMedia().subscriptions.timeUpdate.subscribe(() => {
+          this.state.time = this.api.currentTime;
+        });
       });
 
-      this.socket.on('Sync', (data: { time: number, url: string, playing: boolean }) =>  {
+      this.socket.on('Sync', (data: { time: number, videoURL: string, playing: boolean }) =>  {
         if (this.amOwner) {
+          if(!this.roomDataInitiallyLoaded) {
+            this.sync(data);
+            this.roomDataInitiallyLoaded = true;
+          }
           this.socket.emit('StateUpdate', this.state);
         } else {
           this.sync(data);
@@ -98,19 +107,28 @@ export class RoomPage {
 
   }
 
-  sync(data: { time: number, url: string, playing: boolean } ) {
-    console.log('syncing');
-    if(this.state.url !== data.url) {
-      this.setCurrentVideo(data.url);
+  sync(data: { time: number, videoURL: string, playing: boolean } ) {
+    console.log('syncing with new state');
+    console.log(data);
+    if(this.state.videoURL !== data.videoURL) {
+      this.setCurrentVideo(data.videoURL);
+      this.state.videoURL = data.videoURL;
     }
     if(this.state.playing !== data.playing) {
       if(data.playing) {
-        this.api.play();
+        //if(this.api.canPlay) {
+          this.api.play();
+          this.state.playing = true;
+        //}
       } else {
         this.api.pause();
+        this.state.playing = false;
       }
     }
-    this.state = data;
+    if(this.state.time > data.time + 1.5 || this.state.time < data.time - 1.5) {
+      this.api.seekTime(data.time);
+      this.state.time = data.time;
+    }
   }
 
   setCurrentVideo(source: string) {
@@ -125,7 +143,8 @@ export class RoomPage {
   setVideoURL() {
     console.log('set video url');
     if(!this.amOwner || $("#videoURL").val().toString().trim() === "") return;
-    this.socket.emit('SetVideoURL', $("#videoURL").val());
+    this.state.videoURL = $("#videoURL").val().toString();
+    this.socket.emit('StateUpdate', this.state);
     this.setCurrentVideo($("#videoURL").val().toString());
   }
 
@@ -144,14 +163,23 @@ export class RoomPage {
   }
 
   setRoomName() {
-    if(!this.amOwner || $("#roomName").val().toString().trim() === "") return;
-
-    
+    if((!this.amOwner || $("#roomName").val().toString().trim() === "")) return;
+    if ($("#roomName").val().toString().match(/\.(jpeg|jpg|gif|png)$/) === null) return;
+    firebase.database().ref('/rooms/'+this.roomId).update({
+      roomName: $("#roomName").val(),
+      roomNameLower: $("#roomName").val().toString().toLowerCase()
+    }).then(()=>{
+      $("#roomName").val("");
+    });
   }
 
   setRoomImage() {
     if(!this.amOwner || $("#roomImage").val().toString().trim() === "") return;
-
+    firebase.database().ref('/rooms/'+this.roomId).update({
+      image: $("#roomImage").val()
+    }).then(()=>{
+      $("#roomImage").val("");
+    });
     
   }
 

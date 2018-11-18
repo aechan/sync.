@@ -18,7 +18,7 @@ import { RoomPage } from '../room/room';
 export class HomePage {
   TagsInput;
   title: string = "";
-  theaters;
+  theaters = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
   }
@@ -91,9 +91,18 @@ export class HomePage {
     this.title = "Your activity feed";
     firebase.database().ref('/rooms').on('value', (snap) => {
       let array = this.snapshotToArray(snap);
-      let idx = array.findIndex(function (obj) { return obj.featured; });
-      array.splice(0, 0, array.splice(idx, 1)[0]);
-      this.theaters = array;
+      if(array && array.length > 0) {
+        let idx = array.findIndex(function (obj) { return obj.featured; });
+        array.splice(0, 0, array.splice(idx, 1)[0]);
+        this.theaters = array;
+      } else {
+        this.theaters.push({
+          roomId: "xx",
+          featured: false,
+          roomName: "No Rooms Available!",
+          ownerName: "Sync."
+        });
+      }
     });
   }
 }
