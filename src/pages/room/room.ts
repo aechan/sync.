@@ -42,7 +42,7 @@ export class RoomPage {
     const hostname = window.location.hostname === "localhost" ? window.location.hostname : "sync-server-v2.herokuapp.com";
     const protocol = window.location.hostname === "localhost" ? "http://" : "https://";
     const port = window.location.hostname === "localhost" ? 3000 : 80;
-    this.socket = io(`${protocol}${hostname}:${port}`);
+    this.socket = io(`${protocol}${hostname}${port === 80 ? '' : ':' + port}`);
     this.chats = [];
     this.amOwner = false;
     this.state = {
