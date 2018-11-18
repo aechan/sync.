@@ -37,11 +37,12 @@ export class RoomPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user = firebase.auth().currentUser;
     this.roomId = navParams.get('roomId');
-    this.socket = io('http://localhost:3000');
+    
+    this.socket = io(`http://${window.location.hostname}:3000`);
     this.chats = [];
     this.amOwner = false;
     this.state = {
-      url: `http://localhost:3000/rooms/${this.roomId}/video`,
+      url: ``,
       time: 0,
       playing: false
     };
@@ -75,17 +76,19 @@ export class RoomPage {
         this.amOwner = true;
         this.api.getDefaultMedia().subscriptions.play.subscribe(() => {
           this.state.playing = true;
-          this.socket.emit('SetVideoPlaying', this.state.playing);
         });
         this.api.getDefaultMedia().subscriptions.pause.subscribe(() => {
           this.state.playing = false;
-          this.socket.emit('SetVideoPlaying', this.state.playing);
         });
       });
 
       this.socket.on('Sync', (data: { time: number, url: string, playing: boolean }) =>  {
-        this.sync(data);
-      })
+        if (this.amOwner) {
+          this.socket.emit('StateUpdate', this.state);
+        } else {
+          this.sync(data);
+        }
+      });
 
     })
 
@@ -94,7 +97,7 @@ export class RoomPage {
   sync(data: { time: number, url: string, playing: boolean } ) {
     console.log('syncing');
     if(this.state.url !== data.url) {
-      //this.setCurrentVideo(data.url);
+      this.setCurrentVideo(data.url);
     }
     if(this.state.playing !== data.playing) {
       if(data.playing) {
@@ -107,6 +110,7 @@ export class RoomPage {
   }
 
   setCurrentVideo(source: string) {
+    console.log('Set URL to ' + source);
     this.sources = new Array<Object>();
     this.sources.push({
       src: source,
@@ -118,6 +122,7 @@ export class RoomPage {
     console.log('set video url');
     if(!this.amOwner || $("#videoURL").val().toString().trim() === "") return;
     this.socket.emit('SetVideoURL', $("#videoURL").val());
+    this.setCurrentVideo($("#videoURL").val().toString());
   }
 
   ionViewDidLoad() {
