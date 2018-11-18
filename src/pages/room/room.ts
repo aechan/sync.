@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import firebase from 'firebase';
 import {VgAPI} from 'videogular2/core';
 import io from 'socket.io-client';
+import videojs from 'video.js';
 
 @IonicPage()
 @Component({
@@ -47,6 +48,8 @@ export class RoomPage {
       time: 0,
       playing: false
     };
+
+    
   }
 
   async onPlayerReady(api:VgAPI) {

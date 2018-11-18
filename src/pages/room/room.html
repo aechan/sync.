@@ -51,7 +51,7 @@
         </vg-scrub-bar>
     
     
-        <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
+        <video [vgMedia]="media" #media id="singleVideo" preload="auto">
           <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
         </video>
     </vg-player>
