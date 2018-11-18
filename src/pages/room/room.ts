@@ -38,7 +38,8 @@ export class RoomPage {
     this.user = firebase.auth().currentUser;
     this.roomId = navParams.get('roomId');
     
-    this.socket = io(`http://${window.location.hostname}:3000`);
+    const hostname = window.location.hostname === "localhost" ? window.location.hostname : "sync-server-v2.herokuapp.com";
+    this.socket = io(`http://${hostname}:3000`);
     this.chats = [];
     this.amOwner = false;
     this.state = {
