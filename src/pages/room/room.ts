@@ -164,7 +164,6 @@ export class RoomPage {
 
   setRoomName() {
     if((!this.amOwner || $("#roomName").val().toString().trim() === "")) return;
-    if ($("#roomName").val().toString().match(/\.(jpeg|jpg|gif|png)$/) === null) return;
     firebase.database().ref('/rooms/'+this.roomId).update({
       roomName: $("#roomName").val(),
       roomNameLower: $("#roomName").val().toString().toLowerCase()
@@ -175,6 +174,8 @@ export class RoomPage {
 
   setRoomImage() {
     if(!this.amOwner || $("#roomImage").val().toString().trim() === "") return;
+    if ($("#roomImage").val().toString().match(/\.(jpeg|jpg|gif|png)$/) === null) return;
+
     firebase.database().ref('/rooms/'+this.roomId).update({
       image: $("#roomImage").val()
     }).then(()=>{
@@ -245,10 +246,7 @@ export class RoomPage {
   }
 
   goHome() {
-    this.socket.disconnect();
+    this.socket.close();
     this.navCtrl.setRoot(HomePage);
   }
-
-  
-
 }

@@ -197,6 +197,7 @@ page-room {
         height: 73vh;
         padding: 5vh;
         padding-bottom: 1vh;
+        overflow-y: auto;
     }
     #chatArea {
         position: absolute;
